@@ -21,18 +21,52 @@ function Price() {
         // BtnCheck: false,
         // BtnPay: true,
         pizzas: [],
-        username: 'TendaniMamadi',
+        username: '',
         cartId: '',
         cartPizzas: [],
         cartTotal: 0.00,
         paymentAmount: 0,
         message: '',
+        login(){
+            if(this.username.length > 2){
+                localStorage['username'] = this.username;
+                this.createCart()
+            }else{
+                alert("username is short")
+            }
+        },
+
+        logout(){
+            if(confirm('Doyo you want to logout?')){
+
+                this.username = '';
+                this.cartId = '';
+                localStorage['cartId'] = '';
+                localStorage['username'] = '';
+            }
+
+        },
+
         createCart() {
-            const createCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/create?username=${this.username}`
-            return axios.get(createCartURL).then(result =>{
-                this.cartId = result.data.cart_code;
-                localStorage['cardId'] = this.cartId;
-            })
+
+            if(!this.username){
+                // this.cartId = 'No username to create a cart for'
+                return Promise.resolve();
+            }
+            
+            const cartId = localStorage['cartId']
+            
+            if(cartId){
+                this.cartId = cartId;
+                return Promise.resolve();
+            }else{
+                const createCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/create?username=${this.username}`
+                return axios.get(createCartURL)
+                .then(result =>{
+                    this.cartId = result.data.cart_code;
+                    localStorage['cartId'] = this.cartId;
+                });
+            }
         },
 
         getCart() {
@@ -75,6 +109,14 @@ function Price() {
         },
 
         init() {
+
+            const storedUsername = localStorage['username'];
+            if(storedUsername){
+
+                this.username = storedUsername;
+            }
+
+
             axios.get('https://pizza-api.projectcodex.net/api/pizzas').then(result => {
                 this.pizzas = result.data.pizzas
 
@@ -120,6 +162,7 @@ function Price() {
                             this.cartTotal = 0.00;
                             this.cartId = '';
                             this.paymentAmount = 0;
+                            localStorage['cartId'] = '';
                             this.createCart()
                         }, 3000);
                     }

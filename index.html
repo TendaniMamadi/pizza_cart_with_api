@@ -24,9 +24,11 @@
         <h1>Tendani's Pizza</h1>
     </header>
     <div>
-        Username: <span x-text="username"></span>
+        Username: <input type="text" x-model="username">
+        <button @click="login" x-show="!cartId">Login</button>
+        <button @click="logout" x-show="username && cartId">Logout</button>
     </div>
-    <div>
+    <div x-show="cartId">
         Cart code: <span x-text="cartId"></span>
     </div>
 
@@ -185,7 +187,7 @@
                 </div> -->
     <div class="Cart">
         <template x-for="pizza in pizzas">
-            <div class="pizza">
+            <div class="pizza" x-show="username && cartId">
                 <h5 x-text="pizza.flavour"></h5>
                 <img src="../pizza-main-scaled.jpg" alt="pizza" width="200">
                 <span x-text="pizza.size"></span>
@@ -195,12 +197,12 @@
         </template>
     </div>
 
-
+<!-- 
     <footer class=" pizza Contact_us">
         <h2>Contact Details</h2>
 
         contact us @ 021 559 6363 info@tendanispizza.co.za
-    </footer>
+    </footer> -->
 
 
 
