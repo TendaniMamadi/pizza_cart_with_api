@@ -1,0 +1,153 @@
+body {
+    background-color: #90ad90;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.pizzas {
+    display: flex;
+}
+
+h3,
+h2,
+h1 {
+    text-align: center;
+  
+
+}
+
+.large,
+.medium,
+.small,
+p {
+    text-align: center;
+}
+
+.messageAppearHere {
+    text-align: center;
+}
+
+button {
+    text-align: center;
+    background: chocolate;
+}
+
+.busket {
+    padding: 1rem;
+    margin: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    margin-left: 18rem;
+}
+
+td {
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.pizza {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+
+
+}
+
+.Cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.Contact_us {
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.Small_Pizza {
+    background-color: #FFC09F;
+    flex: 2;
+}
+
+.Medium_Pizza {
+    background-color: #FFEE93;
+    flex: 2;
+}
+
+.Large_Pizza {
+    background-color: #ADF7B6;
+    flex: 2;
+}
+
+.Contact_us {
+    background-color: #A0CED9;
+}
+
+@media (min-width: 960px) {
+    body {
+        background-color: #afa352;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+
+    .pizzas {
+        display: flex;
+    }
+
+    h3,
+    h1 {
+        text-align: center;
+
+    }
+
+    .large,
+    .medium,
+    .small,
+    p {
+        text-align: center;
+    }
+
+    .messageAppearHere {
+        text-align: center;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+
+    .pizza {
+        border: 1px solid black;
+        padding: 1em;
+        margin: 1em;
+        margin-bottom: 0.5em;
+        border-radius: 1em;
+    }
+
+    .Small_Pizza {
+        background-color: #FFC09F;
+        flex: 2;
+    }
+
+    .Medium_Pizza {
+        background-color: #FFEE93;
+        flex: 2;
+    }
+
+    .Large_Pizza {
+        background-color: #ADF7B6;
+        flex: 2;
+    }
+
+    .Contact_us {
+        background-color: #A0CED9;
+    }
+}
